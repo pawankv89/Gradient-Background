@@ -1,14 +1,12 @@
 
-Expandable-List
+GradientBackground
 =========
 
-## Expandable-List with multiple radio button selection.
+## GradientBackground change your background color.
 ------------
  Added Some screens here.
  
-[![](https://github.com/pawankv89/Expandable-List/blob/master/images/screen_1.png)]
-[![](https://github.com/pawankv89/Expandable-List/blob/master/images/screen_2.png)]
-
+[![](https://github.com/pawankv89/GradientBackground/blob/master/images/screen_1.png)]
 
 ## Usage
 ------------
@@ -16,44 +14,40 @@ Expandable-List
 
 
 ```objective-c
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    DetailsCell *cell = (DetailsCell *)[tableView cellForRowAtIndexPath:indexPath];
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view, typically from a nib.
     
-    NSDictionary *dict = [[[self.items objectAtIndex:indexPath.section] objectForKey:@"List"] objectAtIndex:indexPath.row];
+    //Add gradient background
+    CAGradientLayer *bgLayer = [BackgroundLayer blueGradient];
+    bgLayer.frame = self.view.bounds;
+    [self.view.layer insertSublayer:bgLayer atIndex:0];
+}
 
-    NSString *selectedItemId= [dict objectForKey:@"id"];
-    NSString *isSelected = [dict objectForKey:@"isSelected"];
+```
+
+Add some other details.
+
+```objective-c
+//Blue gradient background
++ (CAGradientLayer*) blueGradient {
+    UIColor *colorOne = [UIColor colorWithRed:(120/255.0) green:(135/255.0) blue:(150/255.0) alpha:1.0];
+    UIColor *colorTwo = [UIColor colorWithRed:(57/255.0)  green:(79/255.0)  blue:(96/255.0)  alpha:1.0];
     
-    isSelected = @"YES";
-    cell.radioImageView.image = [UIImage imageNamed:@"radioSelected"];
+    NSArray *colors = [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, nil];
     
-    NSArray *iTemsSubArray = [[self.items objectAtIndex:indexPath.section] objectForKey:@"List"];
+    NSNumber *stopOne = [NSNumber numberWithFloat:0.0];
+    NSNumber *stopTwo = [NSNumber numberWithFloat:1.0];
     
-    for (int counter =0; counter < [iTemsSubArray count]; counter++) {
-        
-        NSDictionary *dictSubItem = [iTemsSubArray objectAtIndex:counter];
-     
-        if ([[dictSubItem objectForKey:@"id"] isEqualToString:selectedItemId]) {
-            
-            NSMutableDictionary *newDict = [[NSMutableDictionary alloc] init];
-            [newDict addEntriesFromDictionary:dictSubItem];
-            [newDict setObject:isSelected forKey:@"isSelected"];
-            
-            [[[self.items objectAtIndex:indexPath.section] objectForKey:@"List"] replaceObjectAtIndex:counter withObject:newDict];
-            
-        }else{
-        
-            NSMutableDictionary *newDict = [[NSMutableDictionary alloc] init];
-            [newDict addEntriesFromDictionary:dictSubItem];
-            [newDict setObject:@"NO" forKey:@"isSelected"];
-        
-             [[[self.items objectAtIndex:indexPath.section] objectForKey:@"List"] replaceObjectAtIndex:counter withObject:newDict];
-        }
-    }
+    NSArray *locations = [NSArray arrayWithObjects:stopOne, stopTwo, nil];
     
-    [self.menuTableView reloadData];
-    
+    CAGradientLayer *headerLayer = [CAGradientLayer layer];
+	headerLayer.colors = colors;
+	headerLayer.locations = locations;
+	
+	return headerLayer;
+                       
 }
 ```
 
