@@ -6,7 +6,7 @@ GradientBackground
 ------------
  Added Some screens here.
  
-[![](https://github.com/pawankv89/GradientBackground/blob/master/images/screen_1.png)]
+[![](https://github.com/pawankv89/GradientBackground/blob/master/images/screen_01.png)]
 
 ## Usage
 ------------
