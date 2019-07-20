@@ -1,13 +1,21 @@
 
+<<<<<<< HEAD
 Gradient Background in Objective C and swift 5.
+=======
+Gradient Background
+>>>>>>> e61a9b82384ac8a0e57b33b2467476b10a574a8c
 =========
 
-## GradientBackground change your background color.
+## Gradient Background change your background color.
 ------------
  Added Some screens here.
  
+<<<<<<< HEAD
 [![](https://github.com/pawankv89/GradientBackground/blob/master/images/screen_01.png)]
 [![](https://github.com/pawankv89/GradientBackground/blob/master/images/screen_02.png)]
+=======
+![](https://github.com/pawankv89/GradientBackground/blob/master/images/screen_01.png)
+>>>>>>> e61a9b82384ac8a0e57b33b2467476b10a574a8c
 
 ## Usage
 ------------
