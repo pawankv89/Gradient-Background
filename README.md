@@ -1,5 +1,5 @@
 
-GradientBackground
+Gradient Background in Objective C and swift 5.
 =========
 
 ## GradientBackground change your background color.
@@ -7,10 +7,11 @@ GradientBackground
  Added Some screens here.
  
 [![](https://github.com/pawankv89/GradientBackground/blob/master/images/screen_01.png)]
+[![](https://github.com/pawankv89/GradientBackground/blob/master/images/screen_02.png)]
 
 ## Usage
 ------------
- You can add this method in your `UICollectionView`.
+ You can add this method in your `GradientBackground`.
 
 
 ```objective-c
@@ -24,6 +25,21 @@ GradientBackground
     bgLayer.frame = self.view.bounds;
     [self.view.layer insertSublayer:bgLayer atIndex:0];
 }
+
+```
+
+
+```swift
+
+override func viewDidLoad() {
+   super.viewDidLoad()
+  // Do any additional setup after loading the view.
+  let backgroundLayer = BackgroundLayer.init()
+  let layer = backgroundLayer.blueNewGradient(frame: self.view.bounds)
+  //self.view.layer.insertSublayer(layer, at: 0)
+  imageView.layer.insertSublayer(layer, at: 0)
+}
+
 
 ```
 
@@ -49,6 +65,38 @@ Add some other details.
 	return headerLayer;
                        
 }
+```
+
+
+```swift
+//Blue gradient background
+
+
+import Foundation
+import UIKit
+
+class BackgroundLayer: NSObject {
+
+func blueNewGradient(frame: CGRect) -> CAGradientLayer {
+
+let colorOne: UIColor = UIColor.init(red: 104/255.0, green: 176/255.0, blue: 233/255.0, alpha: 1.0)
+let colorTwo: UIColor = UIColor.init(red: 0/255.0, green: 188/255.0, blue: 212/255.0, alpha: 1.0)
+
+let colors: Array<Any> = [colorOne.cgColor, colorTwo.cgColor]
+
+let headerLayer: CAGradientLayer = CAGradientLayer()
+headerLayer.colors = colors
+headerLayer.frame = frame
+
+headerLayer.startPoint = CGPoint.init(x: 0.0, y: 0.5)
+headerLayer.endPoint = CGPoint.init(x: 1.0, y: 0.5)
+
+
+return headerLayer
+}
+}
+
+
 ```
 
 ## License
